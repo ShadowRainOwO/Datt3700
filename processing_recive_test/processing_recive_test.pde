@@ -12,7 +12,7 @@ void settings() {
 void messageReceived(String topic, byte[] payload) {
   //println(topic, int(new String(payload)));  // this is a general print of all topics subscribed to.
     
-  if (topic.equals("Counter/Name")){ //  if topic string is named "whatever" - then set the values received as a float. 
+  if (topic.equals("test1/test2")){ //  if topic string is named "whatever" - then set the values received as a float. 
   meCounter = int(new String(payload));
   println("Counter/Name - " + (meCounter)); // print the values
   }
@@ -20,8 +20,8 @@ void messageReceived(String topic, byte[] payload) {
 
 void setup() {
   client = new MQTTClient(this);
-  client.connect(server, "studentName");
-  client.subscribe("Counter/Name");
+  client.connect(server, "Yuxuan_Wang");
+  client.subscribe("test1/test2");
 }
 
 void draw() {
@@ -30,7 +30,7 @@ void draw() {
 
 void keyPressed(){
 
-  client.publish("/Counter/Name", str(count));
+  client.publish("/test1/test2", str(count));
   count++;
 
 }
